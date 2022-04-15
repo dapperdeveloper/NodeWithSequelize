@@ -2,10 +2,11 @@ const express = require("express");
 const DB = require("./config/DB");
 const User = require("./model/Users");
 const app = express();
+const cors = require('cors')
 
 // Json decode
-//app.use(express.json());
-app.use(express.json())
+app.use(cors())
+app.use(express.json());
 // Router
 const userRoute = require("./routes/UserRoute");
 app.use("/api/users", userRoute);
@@ -20,3 +21,4 @@ app.listen(1000, async () => {
   }
   console.log("server is running");
 });
+

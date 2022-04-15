@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Here a loader is created which 
+             loads till response comes -->
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status" id="loading">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <h1 id="id01">Registered Employees</h1>
+    <!-- table for showing data -->
+    <table id="employees"></table>
+    <label for="users">Choose a User:</label>
+
+    <select name="users" id="users">
+      
+    </select>
+
+    <script>
+      fetch("http://127.0.0.1:1000/api/users")
+      .then(res =>res.json())
+      .then(res => {
+        console.log(res.users)
+        res.users.forEach(item => {
+          document.getElementById("users").innerHTML += `<option>${item.name}</option>`
+        });
+      }
+      )
+      
+    </script>
+  </body>
+</html>
